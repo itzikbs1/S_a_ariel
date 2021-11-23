@@ -9,13 +9,13 @@ int main(){
     scanf("%c", &x);
     while (i != 0){
      if (x == 'A'){
-        getMat(mat);
+        getMat();
     }   
     if (x == 'B'){
-        route(mat);
+        route();
     }
      if (x == 'C'){
-        fastestRoute(mat);
+        fastestRoute();
     }
     if (x == 'D'){
         i = 0;
