@@ -2,25 +2,25 @@
 #include <math.h>
 #include "my_mat.h"
 
-#define N 10
-
 int main(){
     
     char x;
-    int mat[N][N];
+    int i=1;
     scanf("%c", &x);
-
-    while (x != 'D')
-    {
+    while (i != 0){
      if (x == 'A'){
-        valueOfTheArray(mat);
+        getMat(mat);
     }   
     if (x == 'B'){
-        checkPath(mat);
+        route(mat);
     }
      if (x == 'C'){
-        smallestPath(mat);
+        fastestRoute(mat);
     }
+    if (x == 'D'){
+        i = 0;
+    }
+    scanf("%c", &x);
     }
     return 0;
 }
