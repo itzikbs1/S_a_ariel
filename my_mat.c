@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "my_mat.h"
 #define n 10
-#define MaxValue 10000;
+#define MaxValue 10000
 
 int m[n][n];
 
