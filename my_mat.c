@@ -40,8 +40,9 @@ void route(){
     }
     if (arr[i][j] != MaxValue && i != j){
         printf("%s\n", "True");
-    }
+    }else{
     printf("%s\n", "False");
+}
 }
 
 void buildFastestRoutes(int y, int z){
@@ -63,7 +64,7 @@ void buildFastestRoutes(int y, int z){
             }
         }
         if (y != z && arr[y][z] != MaxValue){
-             printf("%d", arr[y][z]);
+             printf("%d\n", arr[y][z]);
         }else{
             printf("-1\n");
         }
