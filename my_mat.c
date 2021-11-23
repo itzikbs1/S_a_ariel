@@ -1,56 +1,76 @@
 #include <stdio.h>
 #include "my_mat.h"
-#define N 10
+#define n 10
+#define MaxValue 10000;
 
+int m[n][n];
 
-
-    int min(int a, int b){
-        if(a < b)
-        return a;
+int findMin(int a, int b){
+   if (a < b){
+       return a;
+   }
     return b;
+}
+
+void getMat(){
+    for(int i=0;i<n;i++){
+        for(int j=0;j<n;j++){
+            scanf("%d",&m[i][j]);
+        }
     }
-    void valueOfTheArray(int mat[N][N]){
-        for (int i=0; i<N; i++){
-            for(int j=0; j<N; j++){
-            // printf("Enter element [%d ,%d] : ", i,j);
-            scanf("%d", &mat[i][j]);  
+}
+void route(){
+    int i,j,k,x;
+    int arr[n][n];
+    scanf("%d %d" , &i, &j);
+    for (k = 0; k < n; k++){
+        for (x = 0; x < n; x++){
+            arr[k][x] = mat[k][x];
+        }
+    }
+        if (arr[k][x] == 0 && k != x){
+            arr[k][x] = MaxValue;
+        }
+        for (int k = 0; k < n; k++){
+        for (int i = 0; i < n; i++){
+            for (int j = 0; j < n; j++){
+                m[i][j] = findMin(m[i][j], m[i][k] + m[k][j]);
             }
         }
     }
-
-    void checkPath(int mat[N][N]){
-        int i, j;
-        // int[][] mat = arr;
-        // printf("Enter i and j for first matrix: ");
-        scanf("%d %d", &i, &j);
-        valueOfTheArray(mat);
-        if (mat[i][j] >= 0){
-            printf("True");
-        }
-        printf("False");
+    if (arr[i][j] != MaxValue && i != j){
+        printf("True \n");
     }
+    printf("False \n");
+}
 
-    void calculate(int mat[N][N]){
-        // Matrix = arr;
-    valueOfTheArray(mat);
-    for (int k = 0; k < N; k++){
-        for (int i = 0; i < N; i++){
-            for (int j = 0; j < N; j++){
-                mat[i][j] = min(mat[i][j], (mat[i][N] + mat[N][j]));
-                    
+void buildFastestRoutes(int y, int z){
+    for (k = 0; k < n; k++){
+        for (x = 0; x < n; x++){
+            arr[k][x] = mat[k][x];
+        }
+    }
+        if (arr[k][x] == 0 && k != x){
+            arr[k][x] = MaxValue;
+        }
+    for (int k = 0; k < n; k++){
+            for (int i = 0; i < n; i++){
+                for (int j = 0; j < n; j++){
+                    m[i][j] = findMin(m[i][j], m[i][k] + m[k][j]);
                 }
             }
-        }   
-    }
+        }
+        if (i != j && arr[y][z] != MaxValue){
+             printf("%d", arr[i][j]);
+        }else{
+            printf("-1\n");
+        }
+        
+}
 
-    void smallestPath(int mat[N][N]){
-        int i, j;
-        scanf("%d %d", &i, &j);
-        calculate(mat);
-        if (mat[i][j] >= 0){
-            printf("%d", mat[N][N]);
-        }
-        else{
-            printf("-1");
-        }
-    }
+  void fastestRoute(){
+        int i,j;
+        scanf("%d" , &i);
+        scanf("%d" , &j);
+        buildFastestRoutes(i, j);
+}
