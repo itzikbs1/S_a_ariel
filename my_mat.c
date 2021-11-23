@@ -39,9 +39,9 @@ void route(){
         }
     }
     if (arr[i][j] != MaxValue && i != j){
-        printf("True \n");
+        printf("%s\n", "True");
     }
-    printf("False \n");
+    printf("%s\n", "False");
 }
 
 void buildFastestRoutes(int y, int z){
