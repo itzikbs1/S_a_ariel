@@ -12,8 +12,8 @@ all: connections
 
 # connectiond: 
 
-connections: main.o libconnections.a
-		$(CC) $(SHARED) -o connections main.o libconnections.a
+connections: main.o my_mat.o
+		$(CC) $(SHARED) -o connections main.o my_mat.o
 
 # libconnections.a: my_mat.o
 #		 $(AR) $(RCS) libconnections.a my_mat.o
