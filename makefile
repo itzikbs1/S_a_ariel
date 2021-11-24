@@ -8,7 +8,7 @@ C = -c
 O = -o
 
 all: connections
-#		$(CC) $(FLAGS) -o all main.o my_mat.o
+	$(CC) $(FLAGS) -o all main.o my_mat.o
 
 # connectiond: 
 
