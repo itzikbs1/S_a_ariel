@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "my_mat.h"
 #define n 10
-#define MaxValue 10000
+#define MaxValue 10000000
 
 int m[n][n];
 
@@ -26,43 +26,45 @@ void route(){
     for (k = 0; k < n; k++){
         for (x = 0; x < n; x++){
             arr[k][x] = m[k][x];
-        }
-    }
-        if (m[k][x] == 0 && k != x){
+
+            if (m[k][x] == 0 && k != x){
             arr[k][x] = MaxValue;
         }
-        for (int k = 0; k < n; k++){
-        for (int i = 0; i < n; i++){
-            for (int j = 0; j < n; j++){
-                arr[i][j] = findMin(arr[i][j], arr[i][k] + arr[k][j]);
+        }
+    }
+        
+        for (k = 0; k < n; k++){
+        for (x = 0; x < n; x++){
+            for (int s = 0; s < n; s++){
+                arr[x][s] = findMin(arr[x][s], arr[x][k] + arr[k][s]);
             }
         }
     }
     if (arr[i][j] != MaxValue && i != j){
-        printf("%s\n", "True");
+        printf("%s", "True\n");
     }else{
-    printf("%s\n", "False");
+    printf("%s", "False\n");
 }
 }
 
 void buildFastestRoutes(int y, int z){
     int k, x, i, j;
     int arr[n][n];
-    for (k = 0; k < n; k++){
-        for (x = 0; x < n; x++){
-            arr[k][x] = m[k][x];
+    for (i = 0; i < n; i++){
+        for (j = 0; j < n; j++){
+            arr[i][j] = m[i][j];
+            if (m[i][j] == 0 && i != j){
+            arr[i][j] = MaxValue;
+        }
         }
     }
-        if (m[k][x] == 0 && k != x){
-            arr[k][x] = MaxValue;
-        }
-    for (int k = 0; k < n; k++){
-            for (i = 0; i < n; i++){
-                for (j = 0; j < n; j++){
-                    arr[i][j] = findMin(arr[i][j], arr[i][k] + arr[k][j]);
-                }
+    for (k = 0; k < n; k++){
+        for (i = 0; i < n; i++){
+            for (j = 0; j < n; j++){
+                arr[i][j] = findMin(arr[i][j], arr[i][k] + arr[k][j]);
             }
         }
+    }
         if (y != z && arr[y][z] != MaxValue){
              printf("%d\n", arr[y][z]);
         }else{
@@ -73,7 +75,7 @@ void buildFastestRoutes(int y, int z){
 
   void fastestRoute(){
         int i,j;
-        scanf("%d" , &i);
-        scanf("%d" , &j);
+        scanf("%d %d" , &i, &j);
+        // scanf("%d" , &j);
         buildFastestRoutes(i, j);
 }
