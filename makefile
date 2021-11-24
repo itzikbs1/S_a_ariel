@@ -8,16 +8,18 @@ C = -c
 O = -o
 
 all: connections
-		$(CC) $(FLAGS) -o all main.o my_mat.o
+#		$(CC) $(FLAGS) -o all main.o my_mat.o
+
+# connectiond: 
 
 connections: main.o libconnections.a
 		$(CC) $(SHARED) -o connections main.o libconnections.a
 
-libconnections.a: my_mat.o
-		$(AR) $(RCS) libconnections.a my_mat.o
+# libconnections.a: my_mat.o
+#		 $(AR) $(RCS) libconnections.a my_mat.o
 
 # libconnections.so: my_mat.o
-#		$(CC) $(SHARED) -o libconnections.so my_mat.o
+# 		$(CC) $(SHARED) -o libconnections.so my_mat.o
 
 main.o: main.c my_mat.h
 		$(CC) $(FLAGS) -c main.c
