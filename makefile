@@ -1,34 +1,21 @@
-CC=gcc
-# AR=ar
 FLAGS= -g -Wall
-# LM = -lm
-# RCS = -rcs
-SHARED = -shared
-# C = -c
-# O = -o
 
 all: connections
-#		$(CC) $(FLAGS) -o all main.o my_mat.o
 
-# connectiond: 
-
-connections: main.o my_mat.o
-		$(CC) $(SHARED) -o connections main.o my_mat.o
-
-# libconnections.a: my_mat.o
-#		 $(AR) $(RCS) libconnections.a my_mat.o
-
-# libconnections.so: my_mat.o
-# 		$(CC) $(SHARED) -o libconnections.so my_mat.o
+connections: main.o libmy_mat.so
+	gcc $(FLAGS) main.o libmy_mat.so -o connections
 
 main.o: main.c my_mat.h
-		$(CC) $(FLAGS) -c main.c
+	gcc $(FLAGS) -c main.c
 
 my_mat.o: my_mat.c my_mat.h
-		$(CC) $(FLAGS) -c my_mat.c
+	gcc $(FLAGS) -c my_mat.c
+
+libmy_mat.so: my_mat.o 
+	gcc -shared -o libmy_mat.so my_mat.o
 
 
 .PHONY: clean all
 
 clean:
-	rm -f *.o *.a *.so connections
+	rm -f connections *.o *.so
