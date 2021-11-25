@@ -1,14 +1,14 @@
 CC=gcc
-AR=ar
+# AR=ar
 FLAGS= -g -Wall
-LM = -lm
-RCS = -rcs
+# LM = -lm
+# RCS = -rcs
 SHARED = -shared
-C = -c
-O = -o
+# C = -c
+# O = -o
 
 all: connections
-	$(CC) $(FLAGS) -o all main.o my_mat.o
+#		$(CC) $(FLAGS) -o all main.o my_mat.o
 
 # connectiond: 
 
