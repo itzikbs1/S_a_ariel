@@ -1,21 +1,21 @@
-CC=gcc
 FLAGS= -g -Wall
-SHARED = -shared
-
 
 all: connections
 
-
-connections: main.o my_mat.o
-		$(CC) $(FLAGS) -o connections main.o my_mat.o
+connections: main.o libmy_mat.so
+	gcc $(FLAGS) main.o libmy_mat.so -o connections
 
 main.o: main.c my_mat.h
-		$(CC) $(FLAGS) -c main.c
+	gcc $(FLAGS) -c main.c
 
 my_mat.o: my_mat.c my_mat.h
-		$(CC) $(FLAGS) -c my_mat.c
+	gcc $(FLAGS) -c my_mat.c
+
+libmy_mat.so: my_mat.o 
+	gcc -shared -o libmy_mat.so my_mat.o
+
 
 .PHONY: clean all
 
 clean:
-	rm -f *.o* connections
+	rm -f connections *.o *.so
