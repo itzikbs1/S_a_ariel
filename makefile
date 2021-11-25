@@ -7,7 +7,7 @@ all: connections
 
 
 connections: main.o my_mat.o
-		$(CC) $(SHARED) -o connections main.o my_mat.o
+		$(CC) $(FLAGS) -o connections main.o my_mat.o
 
 main.o: main.c my_mat.h
 		$(CC) $(FLAGS) -c main.c
