@@ -2,13 +2,14 @@
 #include <math.h>
 #include "my_mat.h"
 
+
 int main(){
     
     char x;
     int i=1;
     
     while (i != 0){
-        scanf("%c", &x);
+    scanf("%c", &x);
      if (x == 'A'){
         getMat();
     }   
@@ -21,7 +22,6 @@ int main(){
     if (x == 'D'){
         i = 0;
     }
-    // scanf("%c", &x);
     }
     return 0;
 }
