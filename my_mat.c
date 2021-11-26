@@ -39,7 +39,6 @@ void getMat(){
     }
 }
 void route(){
-    // int i,j,k,x;
     int i, j;
     int arr[n][n];
     scanf("%d %d" , &i, &j);
