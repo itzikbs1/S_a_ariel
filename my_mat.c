@@ -12,6 +12,25 @@ int findMin(int a, int b){
     return b;
 }
 
+  void copyArray(int a[n][n]){
+    int k, x, i, j;
+    for (int i = 0; i < n; i++){
+       for (int j = 0; j < n; j++){
+           a[i][j] = m[i][j];
+           if (m[i][j] == 0 && i != j){
+           a[i][j] = MaxValue;
+        }
+        }
+    }
+    for (k = 0; k < n; k++){
+        for (i = 0; i < n; i++){
+            for (j = 0; j < n; j++){
+                a[i][j] = findMin(a[i][j], a[i][k] + a[k][j]);
+            }
+        }
+    }
+    }
+
 void getMat(){
     for(int i=0;i<n;i++){
         for(int j=0;j<n;j++){
@@ -20,26 +39,12 @@ void getMat(){
     }
 }
 void route(){
-    int i,j,k,x;
+    // int i,j,k,x;
+    int i, j;
     int arr[n][n];
     scanf("%d %d" , &i, &j);
-    for (k = 0; k < n; k++){
-        for (x = 0; x < n; x++){
-            arr[k][x] = m[k][x];
-
-            if (m[k][x] == 0 && k != x){
-            arr[k][x] = MaxValue;
-        }
-        }
-    }
-        
-        for (k = 0; k < n; k++){
-        for (x = 0; x < n; x++){
-            for (int s = 0; s < n; s++){
-                arr[x][s] = findMin(arr[x][s], arr[x][k] + arr[k][s]);
-            }
-        }
-    }
+    copyArray(arr);
+    
     if (arr[i][j] != MaxValue && i != j){
         printf("%s", "True\n");
     }else{
@@ -50,14 +55,8 @@ void route(){
 void buildFastestRoutes(int y, int z){
     int k, x, i, j;
     int arr[n][n];
-    for (i = 0; i < n; i++){
-        for (j = 0; j < n; j++){
-            arr[i][j] = m[i][j];
-            if (m[i][j] == 0 && i != j){
-            arr[i][j] = MaxValue;
-        }
-        }
-    }
+    copyArray(arr);
+
     for (k = 0; k < n; k++){
         for (i = 0; i < n; i++){
             for (j = 0; j < n; j++){
@@ -76,6 +75,5 @@ void buildFastestRoutes(int y, int z){
   void fastestRoute(){
         int i,j;
         scanf("%d %d" , &i, &j);
-        // scanf("%d" , &j);
         buildFastestRoutes(i, j);
 }
