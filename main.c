@@ -6,8 +6,9 @@ int main(){
     
     char x;
     int i=1;
-    scanf("%c", &x);
+    
     while (i != 0){
+        scanf("%c", &x);
      if (x == 'A'){
         getMat();
     }   
@@ -20,7 +21,7 @@ int main(){
     if (x == 'D'){
         i = 0;
     }
-    scanf("%c", &x);
+    // scanf("%c", &x);
     }
     return 0;
 }
